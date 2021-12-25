@@ -1,1 +1,1 @@
-web: gunicorn FaceDetector:app
+web: gunicorn server:app
