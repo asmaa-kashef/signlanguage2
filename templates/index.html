@@ -1,25 +1,54 @@
+<!DOCTYPE html>
 <html>
-  <head>
-      <title>Face and Eyes detection Application</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <head>
+        <meta charset="utf-8">
+        <meta content="ugh, hi." name="description">
+        <meta content="Makeup Webcam" name="title">
+        <title>Face Detection</title>
+        <style>
+         #container {
+             margin: 0px auto;
+             border: 10px #333 solid;
+         }
+         #videoElement {
+             width: 640px;
+             height: 480px;
+             display: none;
+             background-color: #666;
+         }
 
-	    <link rel="stylesheet" href="static/bootstrap.css"  media="screen" />
-  </head>
+         #imageElement {
+             width: 640px;
+             height: 480px;
+             background-color: #666;
+         }
 
-  <body>
-    <div class="container">
-        <br> <center><h2> Real-time Face and Eyes Detection Application</h2></center><br>
+         #canvasElement {
+             width: 640px;
+             height: 480px;
+             border: 1px solid black;
+         }
+         #photo {
+             width: 640px;
+             height: 480px;
 
-        <h5 align="justify">This application detects faces and eyes of one or more persons posed within the window, in real-time.
-          This is developed and implemented using <a href="https://opencv.org" target="_blank">OpenCV</a>, a real-time Open Source Computer Vision Library.
-          <a href="http://flask.pocoo.org/" target="_blank">Flask microframework</a> is used for
-          real-time video streaming that streams video from user's camera to server and back to user's browser after detecting object(s).<br><br>
+             border: 1px solid black;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div>
+            <video autoplay="true" id="videoElement"></video>
+                <canvas id="canvasElement"></canvas>
 
-          Detect face and eyes by posing yourself within the below window.</h5><br>
+                <img id="photo">
+            </div>
+        </div>
 
-        <center> <img src="{{ url_for('video_feed') }}" alt="If video window doesn't show-up try using Google Chrome browser" /> </center>
-        <p align="right"><b>- <a href="http://www.socratesk.com" target="_blank">Socrates</a></b></p>
-    </div>
-  </body>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    </body>
 </html>
