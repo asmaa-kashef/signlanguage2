@@ -7,6 +7,8 @@
   let start_button = document.querySelector("#start-record");
   let stop_button = document.querySelector("#stop-record");
   let download_link = document.querySelector("#download-video");
+  var playButton = document.querySelector('button#play');
+  var recordedVideo = document.querySelector('video#recorded');
   var localMediaStream = null;
   let media_recorder = null;
   let blobs_recorded = [];
@@ -89,3 +91,10 @@ camera_button.addEventListener('click', async function() {
 stop_button.addEventListener('click', function() {
   media_recorder.stop(); 
 });
+
+function play() {
+  var type = (blobs_recorded[0] || {}).type;
+  var superBuffer = new Blob(blobs_recorded, {type});
+  recordedVideo.src = window.URL.createObjectURL(superBuffer);
+}
+playButton.onclick = play;
